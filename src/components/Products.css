@@ -1,0 +1,15 @@
+.container {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+}
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td,
+th {
+  padding: 10px 20px;
+}
