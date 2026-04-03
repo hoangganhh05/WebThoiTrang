@@ -81,7 +81,9 @@ const ProductDetailPage = () => {
     setSubmitting(true);
     try {
       await axios.post("http://localhost:8080/api/reviews", {
-        userId: user.id, productId: parseInt(id), rating: myRating, comment: myComment.trim()
+        userId: user.id, userName: user.username, productId: parseInt(id), rating: myRating, comment: myComment.trim()
+      }, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       });
       setMyComment(""); setMyRating(5); fetchReviews();
       window.showToast?.("Đã gửi đánh giá! 🎉", "success");
@@ -256,10 +258,10 @@ const ProductDetailPage = () => {
                   <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                     {reviews.map(r => (
                       <div key={r.id} style={{ display: "flex", gap: "15px", paddingBottom: "20px", borderBottom: "1px solid var(--border-color)" }}>
-                        <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "var(--primary-color)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold" }}>{(r.user?.username || "?")[0]}</div>
+                        <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "var(--primary-color)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "18px", textTransform: "uppercase" }}>{(r.userName || "A")[0]}</div>
                         <div>
-                          <div style={{ fontWeight: "700", fontSize: "14px", marginBottom: "4px" }}>{r.user?.username || "Ẩn danh"} <StarRating rating={r.rating} readonly /></div>
-                          <p style={{ margin: 0, fontSize: "14px", color: "var(--text-secondary)" }}>{r.comment}</p>
+                          <div style={{ fontWeight: "700", fontSize: "14px", marginBottom: "4px", color: "var(--text-primary)" }}>{r.userName || "Ẩn danh"} <span style={{ marginLeft: "10px" }}><StarRating rating={r.rating} readonly /></span></div>
+                          <p style={{ margin: 0, fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.6" }}>{r.comment}</p>
                         </div>
                       </div>
                     ))}

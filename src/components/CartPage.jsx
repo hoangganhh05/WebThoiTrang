@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 const CartPage = () => {
   const navigate = useNavigate();
-  const { cartItems, removeFromCart, totalPrice, setCartItems } = useCart();
+  const { cartItems, removeFromCart, totalPrice, setCartItems, updateQuantity } = useCart();
 
   const handleCheckout = () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -66,8 +66,29 @@ const CartPage = () => {
                       </div>
                       <p style={{ margin: "0 0 auto 0", color: "#64748b", fontSize: "14px" }}>Đơn giá: {(item.price || 0).toLocaleString()}đ</p>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-                        <div style={{ background: "#f1f5f9", padding: "6px 15px", borderRadius: "20px", fontSize: "14px", fontWeight: "600" }}>
-                          Số lượng: {item.quantity}
+                        <div style={{ display: "flex", alignItems: "center", gap: "10px", background: "#f1f5f9", padding: "5px", borderRadius: "8px", boxShadow: "inset 0 1px 3px rgba(0,0,0,0.05)" }}>
+                          {/* Nút Trừ */}
+                          <button 
+                            onClick={() => updateQuantity(item.id, -1)}
+                            style={{ border: "1px solid var(--border-color)", background: "#fff", width: "28px", height: "28px", borderRadius: "6px", cursor: "pointer", fontWeight: "bold", color: "#64748b", transition: "all 0.2s", display: "flex", alignItems: "center", justifyContent: "center" }}
+                            title="Giảm số lượng"
+                          >
+                            -
+                          </button>
+
+                          {/* Hiển thị số lượng hiện tại */}
+                          <span style={{ fontSize: "15px", fontWeight: "700", width: "25px", textAlign: "center", color: "#1e293b" }}>
+                            {item.quantity}
+                          </span>
+
+                          {/* Nút Cộng */}
+                          <button 
+                            onClick={() => updateQuantity(item.id, 1)}
+                            style={{ border: "1px solid var(--border-color)", background: "#fff", width: "28px", height: "28px", borderRadius: "6px", cursor: "pointer", fontWeight: "bold", color: "#64748b", transition: "all 0.2s", display: "flex", alignItems: "center", justifyContent: "center" }}
+                            title="Tăng số lượng"
+                          >
+                            +
+                          </button>
                         </div>
                         <p style={{ margin: 0, fontWeight: "800", color: "#0f172a", fontSize: "18px" }}>
                           {(item.price * item.quantity).toLocaleString()}đ

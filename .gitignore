@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# React
+react-app/node_modules/
+react-app/dist/
+react-app/.env
+
+# Spring Boot
+backend/target/
+backend/.mvn/
+backend/.idea/
+backend/*.iml

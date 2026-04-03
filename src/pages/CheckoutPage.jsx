@@ -5,10 +5,11 @@ import axios from "axios";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
-  const { cartItems, totalPrice, setCartItems } = useCart();
+  const { cartItems, totalPrice, setCartItems, clearCart } = useCart();
   const [isSuccess, setIsSuccess] = useState(false);
   const [isBank, setIsBank] = useState(false);
   const [bankOrderData, setBankOrderData] = useState(null);
+  const [successOrderData, setSuccessOrderData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("user"));
@@ -75,13 +76,19 @@ const CheckoutPage = () => {
 
     try {
       const res = await axios.post("http://localhost:8080/api/orders", orderData);
-      setCartItems([]);
+      
+      // Phân tích kết quả trả về từ Backend để lấy Order ID
+      const responseText = typeof res.data === "string" ? res.data : JSON.stringify(res.data);
+      const match = responseText.match(/\d+/);
+      const orderId = match ? match[0] : Math.floor(Math.random() * 100000);
+      
+      // LƯU LẠI TOÀN BỘ DỮ LIỆU ĐƠN HÀNG TRƯỚC KHI XÓA GIỎ
+      setSuccessOrderData({ id: orderId, amount: finalTotal });
+      
+      // Xóa giỏ hàng
+      await clearCart();
       
       if (formData.paymentMethod === "BANK") {
-        const responseText = typeof res.data === "string" ? res.data : JSON.stringify(res.data);
-        const match = responseText.match(/\d+/);
-        const orderId = match ? match[0] : Math.floor(Math.random() * 100000);
-        
         setBankOrderData({ id: orderId, amount: finalTotal });
         setIsBank(true);
       } else {
@@ -148,14 +155,14 @@ const CheckoutPage = () => {
           </p>
 
           <div style={{ background: "var(--bg-color)", padding: "25px", borderRadius: "20px", marginBottom: "40px", textAlign: "left", border: "1.5px dashed var(--border-color)" }}>
-             <h4 style={{ margin: "0 0 15px 0", fontSize: "15px", color: "var(--text-primary)" }}>Mã đơn hàng: <span style={{ color: "var(--primary-color)" }}>#ORD-{Math.floor(Math.random()*100000)}</span></h4>
+             <h4 style={{ margin: "0 0 15px 0", fontSize: "15px", color: "var(--text-primary)" }}>Mã đơn hàng: <span style={{ color: "var(--primary-color)" }}>#ORD-{successOrderData?.id}</span></h4>
              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", fontSize: "14px", color: "var(--text-secondary)" }}>
                 <span>Phương thức:</span>
                 <span style={{ fontWeight: "700" }}>{formData.paymentMethod === "COD" ? "Thanh toán khi nhận hàng" : "Chuyển khoản QR"}</span>
              </div>
              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", color: "var(--text-secondary)" }}>
                 <span>Tổng thanh toán:</span>
-                <span style={{ fontWeight: "900", color: "var(--danger-color)", fontSize: "18px" }}>{finalTotal.toLocaleString()}đ</span>
+                <span style={{ fontWeight: "900", color: "var(--danger-color)", fontSize: "18px" }}>{successOrderData?.amount?.toLocaleString() || 0}đ</span>
              </div>
           </div>
 
