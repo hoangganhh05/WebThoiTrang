@@ -38,18 +38,16 @@ const Navbar = () => {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   const handleLogout = () => {
-    if (window.confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
-      localStorage.removeItem("user");
-      localStorage.removeItem("token");
-      setUser(null);
-      window.dispatchEvent(new Event("authChange"));
-      window.showToast?.("Hẹn gặp lại!", "info");
-      navigate("/login");
-    }
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setUser(null);
+    window.dispatchEvent(new Event("authChange"));
+    window.showToast?.("Hẹn gặp lại!", "info");
+    setShowLogoutConfirm(false);
+    navigate("/login");
   };
 
   // Hàm xử lý khi nhấn Enter hoặc nút Tìm kiếm
@@ -182,7 +180,7 @@ const Navbar = () => {
                   </Link>
 
                   <div
-                    onClick={() => { setProfileOpen(false); handleLogout(); }}
+                    onClick={() => { setProfileOpen(false); setShowLogoutConfirm(true); }}
                     style={{ display: "flex", alignItems: "center", gap: "10px", padding: "11px 14px", color: "#ef4444", textDecoration: "none", fontWeight: "600", fontSize: "14px", borderRadius: "10px", transition: "background 0.15s", cursor: "pointer", marginTop: "5px", borderTop: "1px solid #334155" }}
                     onMouseEnter={e => e.currentTarget.style.background = "rgba(239, 68, 68, 0.1)"}
                     onMouseLeave={e => e.currentTarget.style.background = "transparent"}
@@ -260,6 +258,33 @@ const Navbar = () => {
           Admin
         </Link> */}
       </div>
+
+      {/* CUSTOM LOGOUT CONFIRM MODAL SIÊU ĐẸP */}
+      {showLogoutConfirm && (
+        <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", zIndex: 100000, display: "flex", alignItems: "center", justifyContent: "center", animation: "fadeIn 0.2s ease" }}>
+          <div style={{ background: "var(--card-bg)", padding: "30px", borderRadius: "16px", width: "90%", maxWidth: "400px", boxShadow: "var(--shadow-lg)", textAlign: "center", color: "var(--text-primary)", animation: "popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
+            <div style={{ fontSize: "40px", marginBottom: "15px", animation: "float-up 0.5s ease" }}>🚪</div>
+            <h3 style={{ margin: "0 0 10px 0", fontSize: "22px", fontWeight: "800", color: "#1e293b" }}>Xác nhận đăng xuất</h3>
+            <p style={{ margin: "0 0 25px 0", color: "#64748b", fontSize: "15px", lineHeight: "1.5" }}>
+              Bạn có chắc chắn muốn rời khỏi hệ thống <b style={{ color: "var(--primary-color)" }}>S-Style</b> không? Hãy quay lại sớm nhé!
+            </p>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <button 
+                onClick={() => setShowLogoutConfirm(false)}
+                style={{ flex: 1, padding: "12px", background: "#f1f5f9", color: "#475569", border: "1px solid #e2e8f0", borderRadius: "10px", fontWeight: "bold", fontSize: "15px" }}
+              >
+                Hủy bỏ
+              </button>
+              <button 
+                onClick={handleLogout}
+                style={{ flex: 1, padding: "12px", background: "var(--danger-color)", color: "#fff", border: "none", borderRadius: "10px", fontWeight: "bold", fontSize: "15px", boxShadow: "0 4px 10px rgba(217, 79, 61, 0.3)" }}
+              >
+                Thoát ngay
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
