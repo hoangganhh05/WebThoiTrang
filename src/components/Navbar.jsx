@@ -23,13 +23,18 @@ const Navbar = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [adminOpen, setAdminOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
   const adminRef = React.useRef(null);
+  const profileRef = React.useRef(null);
 
   // Đóng dropdown khi click ra ngoài
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (adminRef.current && !adminRef.current.contains(e.target)) {
         setAdminOpen(false);
+      }
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setProfileOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -146,16 +151,49 @@ const Navbar = () => {
         {user ? (
           <>
             <div 
-              onClick={() => navigate("/profile")}
-              title="Profile cá nhân" 
-              style={{ display: "flex", alignItems: "center", gap: "8px", marginLeft: "15px", padding: "4px 12px 4px 6px", background: "rgba(255,255,255,0.08)", borderRadius: "30px", border: "1px solid rgba(255,255,255,0.1)", cursor: "pointer", transition: "all 0.3s" }}
+              ref={profileRef}
+              style={{ position: "relative", marginLeft: "15px" }}
             >
-              <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: "linear-gradient(135deg, var(--primary-color), #b05020)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "14px", color: "#fff", boxShadow: "0 2px 5px rgba(0,0,0,0.2)" }}>
-                {user.username.charAt(0).toUpperCase()}
+              <div 
+                onClick={() => setProfileOpen(!profileOpen)}
+                title="Profile cá nhân" 
+                style={{ display: "flex", alignItems: "center", gap: "8px", padding: "4px 12px 4px 6px", background: profileOpen ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.08)", borderRadius: "30px", border: "1px solid rgba(255,255,255,0.1)", cursor: "pointer", transition: "all 0.3s" }}
+              >
+                <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: "linear-gradient(135deg, var(--primary-color), #b05020)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "14px", color: "#fff", boxShadow: "0 2px 5px rgba(0,0,0,0.2)" }}>
+                  {user.username.charAt(0).toUpperCase()}
+                </div>
+                <span style={{ color: "#fff", fontWeight: "600", fontSize: "14px" }}>
+                  {user.username}
+                </span>
+                <span style={{ fontSize: "10px", opacity: 0.7, transition: "transform 0.25s", transform: profileOpen ? "rotate(180deg)" : "rotate(0deg)", display: "inline-block" }}>▼</span>
               </div>
-              <span style={{ color: "#fff", fontWeight: "600", fontSize: "14px" }}>
-                {user.username}
-              </span>
+
+              {profileOpen && (
+                <div
+                  style={{ position: "absolute", top: "calc(100% + 6px)", right: 0, background: "#1e293b", border: "1px solid #334155", borderRadius: "14px", padding: "8px", minWidth: "180px", boxShadow: "0 20px 40px rgba(0,0,0,0.4)", zIndex: 9999 }}
+                >
+                  <Link
+                    to="/profile"
+                    onClick={() => setProfileOpen(false)}
+                    style={{ display: "flex", alignItems: "center", gap: "10px", padding: "11px 14px", color: "#fff", textDecoration: "none", fontWeight: "600", fontSize: "14px", borderRadius: "10px", transition: "background 0.15s" }}
+                    onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.06)"}
+                    onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+                  >
+                    <span style={{ fontSize: "18px" }}>👤</span>
+                    Hồ sơ của tôi
+                  </Link>
+
+                  <div
+                    onClick={() => { setProfileOpen(false); handleLogout(); }}
+                    style={{ display: "flex", alignItems: "center", gap: "10px", padding: "11px 14px", color: "#ef4444", textDecoration: "none", fontWeight: "600", fontSize: "14px", borderRadius: "10px", transition: "background 0.15s", cursor: "pointer", marginTop: "5px", borderTop: "1px solid #334155" }}
+                    onMouseEnter={e => e.currentTarget.style.background = "rgba(239, 68, 68, 0.1)"}
+                    onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+                  >
+                    <span style={{ fontSize: "18px" }}>🚪</span>
+                    Đăng xuất
+                  </div>
+                </div>
+              )}
             </div>
             {user.role === "ADMIN" && (
               <div
@@ -199,22 +237,6 @@ const Navbar = () => {
                 )}
               </div>
             )}
-
-            <button
-              onClick={handleLogout}
-              style={{
-                marginLeft: "15px",
-                border: "1px solid var(--border-color)",
-                background: "rgba(255,255,255,0.1)",
-                color: "#fff",
-                cursor: "pointer",
-                padding: "8px 16px",
-                borderRadius: "20px",
-                fontWeight: "600"
-              }}
-            >
-              Đăng xuất
-            </button>
           </>
         ) : (
           <Link

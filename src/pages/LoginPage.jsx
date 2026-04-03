@@ -9,6 +9,8 @@ const LoginPage = () => {
   });
   const navigate = useNavigate();
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -69,13 +71,22 @@ const LoginPage = () => {
 
           <div>
             <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#475569", fontSize: "14px" }}>Mật khẩu</label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              required
-              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-              style={{ width: "100%", padding: "14px 16px", border: "1px solid #cbd5e1", borderRadius: "10px", backgroundColor: "#f8fafc", fontSize: "15px", transition: "0.2s" }}
-            />
+            <div style={{ position: "relative" }}>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                required
+                onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                style={{ width: "100%", padding: "14px 45px 14px 16px", border: "1px solid #cbd5e1", borderRadius: "10px", backgroundColor: "#f8fafc", fontSize: "15px", transition: "0.2s" }}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", fontSize: "16px", color: "#94a3b8", padding: "5px" }}
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
           </div>
 
           <button
