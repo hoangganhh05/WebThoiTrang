@@ -483,6 +483,37 @@ main > * {
   }
   
   nav > div:last-child a span { display: none; } /* Chỉ hiện icon trên mobile siêu nhỏ */
+  
+  /* Chi tiết sản phẩm MOBILE */
+  .product-detail-layout {
+    gap: 30px !important;
+  }
+  .gallery-layout {
+    flex-direction: column-reverse !important; /* Ảnh nhỏ cuộn xuống dưới */
+  }
+  .gallery-layout > div:first-child {
+    flex-direction: row !important;
+    justify-content: center;
+  }
+  .gallery-layout > div:first-child > div {
+    width: 65px !important;
+    height: 80px !important;
+  }
+  .gallery-main-img {
+    height: 380px !important; /* Thu nhỏ ảnh chính để vừa màn hình */
+    border-radius: 16px !important;
+  }
+  .product-title {
+    font-size: 30px !important; /* Tiêu đề nhỏ lại trên đt */
+  }
+  .product-content-grid {
+    grid-template-columns: 1fr !important; /* Tabs vs Sản phẩm lq Xếp dọc */
+    gap: 40px !important;
+    margin-top: 40px !important;
+  }
+  .product-content-grid > div:first-child {
+    padding: 20px !important; /* Thu nhỏ padding cái khung trắng bọc Đánh giá */
+  }
 }
 
 /* =============================================

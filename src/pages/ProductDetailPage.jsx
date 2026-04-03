@@ -127,10 +127,10 @@ const ProductDetailPage = () => {
           <span style={{ color: "var(--primary-color)", fontWeight: "600" }}>{product.sanPham}</span>
         </nav>
 
-        <div style={{ display: "flex", gap: "60px", flexWrap: "wrap", alignItems: "flex-start" }}>
+        <div className="product-detail-layout" style={{ display: "flex", gap: "60px", flexWrap: "wrap", alignItems: "flex-start" }}>
           
           {/* GALERRY ẢNH */}
-          <div style={{ flex: "1 1 600px", display: "flex", gap: "20px" }}>
+          <div className="gallery-layout" style={{ flex: "1 1 600px", display: "flex", gap: "20px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                {[1,2,3,4].map(i => (
                  <div key={i} style={{ width: "80px", height: "100px", borderRadius: "10px", overflow: "hidden", border: i === 1 ? "2px solid var(--primary-color)" : "1.5px solid var(--border-color)", cursor: "pointer", opacity: i === 1 ? 1 : 0.6 }}>
@@ -138,7 +138,7 @@ const ProductDetailPage = () => {
                  </div>
                ))}
             </div>
-            <div style={{ flex: 1, background: "#fff", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)", boxShadow: "var(--shadow-sm)", height: "700px" }}>
+            <div className="gallery-main-img" style={{ flex: 1, background: "#fff", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)", boxShadow: "var(--shadow-sm)", height: "700px" }}>
                <img 
                  src={product.imageUrl && product.imageUrl.startsWith("/") ? `https://api.anhhoangg.id.vn${product.imageUrl}` : (product.imageUrl || "/placeholder.png")} 
                  style={{ width: "100%", height: "100%", objectFit: "cover", transition: "0.5s" }}
@@ -154,7 +154,7 @@ const ProductDetailPage = () => {
             <span style={{ background: "rgba(224, 123, 57, 0.1)", color: "var(--primary-color)", padding: "6px 16px", borderRadius: "30px", fontSize: "12px", fontWeight: "800", letterSpacing: "1px", textTransform: "uppercase" }}>
               {product.category?.name || "Premium Collection"}
             </span>
-            <h1 style={{ fontSize: "42px", fontWeight: "900", margin: "20px 0 10px 0", color: "var(--text-primary)", fontFamily: "'Playfair Display', serif" }}>{product.sanPham}</h1>
+            <h1 className="product-title" style={{ fontSize: "42px", fontWeight: "900", margin: "20px 0 10px 0", color: "var(--text-primary)", fontFamily: "'Playfair Display', serif" }}>{product.sanPham}</h1>
             
             <div style={{ display: "flex", alignItems: "center", gap: "15px", marginBottom: "25px" }}>
                <StarRating rating={Math.round(avgRating)} readonly />
@@ -216,7 +216,7 @@ const ProductDetailPage = () => {
         </div>
 
         {/*Tabs & Social Content */}
-        <div style={{ marginTop: "80px", display: "grid", gridTemplateColumns: "1fr 340px", gap: "60px", alignItems: "flex-start" }}>
+        <div className="product-content-grid" style={{ marginTop: "80px", display: "grid", gridTemplateColumns: "1fr 340px", gap: "60px", alignItems: "flex-start" }}>
            
            <div style={{ background: "#fff", borderRadius: "24px", padding: "40px", border: "1px solid var(--border-color)", boxShadow: "var(--shadow-sm)" }}>
               <div style={{ display: "flex", gap: "40px", borderBottom: "1.5px solid var(--border-color)", marginBottom: "30px" }}>
