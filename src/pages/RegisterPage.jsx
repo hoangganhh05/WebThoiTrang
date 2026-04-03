@@ -8,10 +8,15 @@ const RegisterPage = () => {
     password: "",
     role: "USER"
   });
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    if (user.password !== confirmPassword) {
+      alert("Lỗi: Mật khẩu nhập lại không khớp!");
+      return;
+    }
     try {
       await axios.post("https://api.anhhoangg.id.vn/api/auth/register", user);
       alert("🎉 Đăng ký thành công! Hãy đăng nhập ngay.");
@@ -65,6 +70,18 @@ const RegisterPage = () => {
               placeholder="Nhập mật khẩu..."
               required
               onChange={(e) => setUser({ ...user, password: e.target.value })}
+              style={{ width: "100%", padding: "14px 16px", border: "1px solid #cbd5e1", borderRadius: "10px", backgroundColor: "#f8fafc", fontSize: "15px", transition: "0.2s" }}
+            />
+          </div>
+
+          <div>
+            <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#475569", fontSize: "14px" }}>Xác nhận mật khẩu</label>
+            <input
+              type="password"
+              placeholder="Nhập lại mật khẩu..."
+              required
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               style={{ width: "100%", padding: "14px 16px", border: "1px solid #cbd5e1", borderRadius: "10px", backgroundColor: "#f8fafc", fontSize: "15px", transition: "0.2s" }}
             />
           </div>

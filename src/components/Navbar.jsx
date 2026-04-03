@@ -42,12 +42,14 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    setUser(null);
-    window.dispatchEvent(new Event("authChange"));
-    window.showToast?.("Hẹn gặp lại!", "info");
-    navigate("/login");
+    if (window.confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      setUser(null);
+      window.dispatchEvent(new Event("authChange"));
+      window.showToast?.("Hẹn gặp lại!", "info");
+      navigate("/login");
+    }
   };
 
   // Hàm xử lý khi nhấn Enter hoặc nút Tìm kiếm
