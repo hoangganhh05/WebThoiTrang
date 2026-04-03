@@ -47,7 +47,7 @@ const CartPage = () => {
                     {/* Ảnh sản phẩm */}
                     <div style={{ width: "120px", height: "120px", background: "#f1f5f9", borderRadius: "12px", overflow: "hidden", flexShrink: 0 }}>
                       <img
-                        src={item.imageUrl && item.imageUrl.startsWith("/") ? `http://localhost:8080${item.imageUrl}` : (item.imageUrl || "https://via.placeholder.com/120?text=No+Image")}
+                        src={item.imageUrl && item.imageUrl.startsWith("/") ? `https://api.anhhoangg.id.vn${item.imageUrl}` : (item.imageUrl || "https://via.placeholder.com/120?text=No+Image")}
                         alt={item.sanPham}
                         style={{ width: "100%", height: "100%", objectFit: "contain", background: "#fff" }}
                       />

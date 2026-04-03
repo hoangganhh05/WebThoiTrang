@@ -114,7 +114,7 @@ const HomePage = () => {
 
   useEffect(() => {
     // Fetch categories
-    axios.get("http://localhost:8080/api/categories")
+    axios.get("https://api.anhhoangg.id.vn/api/categories")
       .then((res) => {
         if (Array.isArray(res.data)) setCategories(res.data);
         else if (res.data && Array.isArray(res.data.data)) setCategories(res.data.data);
@@ -126,9 +126,9 @@ const HomePage = () => {
   useEffect(() => {
     setLoading(true);
 
-    let apiUrl = "http://localhost:8080/api/products";
+    let apiUrl = "https://api.anhhoangg.id.vn/api/products";
     if (keyword) {
-      apiUrl = `http://localhost:8080/api/products/search?keyword=${keyword}`;
+      apiUrl = `https://api.anhhoangg.id.vn/api/products/search?keyword=${keyword}`;
     }
 
     axios

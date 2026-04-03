@@ -12,7 +12,7 @@ const AdminOrders = () => {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:8080/api/orders");
+      const res = await axios.get("https://api.anhhoangg.id.vn/api/orders");
       setOrders(res.data);
     } catch (error) {
       console.error("Lỗi khi tải đơn hàng cho admin:", error);
@@ -24,7 +24,7 @@ const AdminOrders = () => {
   const handleUpdateStatus = async (id, currentStatus) => {
     const newStatus = currentStatus === "PENDING" ? "DONE" : "PENDING";
     try {
-      await axios.put(`http://localhost:8080/api/orders/${id}/status?status=${newStatus}`);
+      await axios.put(`https://api.anhhoangg.id.vn/api/orders/${id}/status?status=${newStatus}`);
       alert(`Đã cập nhật đơn hàng #${id} thành ${newStatus}`);
       fetchOrders();
     } catch (error) {

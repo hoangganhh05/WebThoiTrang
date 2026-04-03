@@ -45,19 +45,19 @@ const ProductDetailPage = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const fetchReviews = () => {
-    axios.get(`http://localhost:8080/api/reviews/product/${id}`)
+    axios.get(`https://api.anhhoangg.id.vn/api/reviews/product/${id}`)
       .then(res => setReviews(Array.isArray(res.data) ? res.data : []))
       .catch(() => setReviews([]));
   };
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:8080/api/products/${id}`)
+    axios.get(`https://api.anhhoangg.id.vn/api/products/${id}`)
       .then(res => {
         setProduct(res.data);
         // Fetch related products (cùng category)
         if (res.data.category?.id) {
-          axios.get(`http://localhost:8080/api/products`)
+          axios.get(`https://api.anhhoangg.id.vn/api/products`)
             .then(allRes => {
               const all = Array.isArray(allRes.data) ? allRes.data : (allRes.data.content || []);
               const related = all.filter(p => p.category?.id === res.data.category.id && p.id !== res.data.id).slice(0, 4);
@@ -80,7 +80,7 @@ const ProductDetailPage = () => {
     if (!myComment.trim()) { window.showToast?.("Vui lòng nhập nội dung!", "error"); return; }
     setSubmitting(true);
     try {
-      await axios.post("http://localhost:8080/api/reviews", {
+      await axios.post("https://api.anhhoangg.id.vn/api/reviews", {
         userId: user.id, userName: user.username, productId: parseInt(id), rating: myRating, comment: myComment.trim()
       }, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -134,13 +134,13 @@ const ProductDetailPage = () => {
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                {[1,2,3,4].map(i => (
                  <div key={i} style={{ width: "80px", height: "100px", borderRadius: "10px", overflow: "hidden", border: i === 1 ? "2px solid var(--primary-color)" : "1.5px solid var(--border-color)", cursor: "pointer", opacity: i === 1 ? 1 : 0.6 }}>
-                    <img src={product.imageUrl && product.imageUrl.startsWith("/") ? `http://localhost:8080${product.imageUrl}` : (product.imageUrl || "/placeholder.png")} style={{ width: "100%", height: "100%", objectFit: "cover" }} alt="small" />
+                    <img src={product.imageUrl && product.imageUrl.startsWith("/") ? `https://api.anhhoangg.id.vn${product.imageUrl}` : (product.imageUrl || "/placeholder.png")} style={{ width: "100%", height: "100%", objectFit: "cover" }} alt="small" />
                  </div>
                ))}
             </div>
             <div style={{ flex: 1, background: "#fff", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)", boxShadow: "var(--shadow-sm)", height: "700px" }}>
                <img 
-                 src={product.imageUrl && product.imageUrl.startsWith("/") ? `http://localhost:8080${product.imageUrl}` : (product.imageUrl || "/placeholder.png")} 
+                 src={product.imageUrl && product.imageUrl.startsWith("/") ? `https://api.anhhoangg.id.vn${product.imageUrl}` : (product.imageUrl || "/placeholder.png")} 
                  style={{ width: "100%", height: "100%", objectFit: "cover", transition: "0.5s" }}
                  alt={product.sanPham}
                  onMouseOver={e => e.currentTarget.style.transform = "scale(1.08)"}
@@ -278,7 +278,7 @@ const ProductDetailPage = () => {
                 {relatedProducts.map(p => (
                   <Link to={`/product/${p.id}`} key={p.id} style={{ textDecoration: "none", color: "inherit", display: "flex", gap: "15px", alignItems: "center" }}>
                     <div style={{ width: "80px", height: "100px", borderRadius: "12px", overflow: "hidden", border: "1px solid var(--border-color)", flexShrink: 0 }}>
-                       <img src={p.imageUrl && p.imageUrl.startsWith("/") ? `http://localhost:8080${p.imageUrl}` : (p.imageUrl || "/placeholder.png")} style={{ width: "100%", height: "100%", objectFit: "cover" }} alt="rel" />
+                       <img src={p.imageUrl && p.imageUrl.startsWith("/") ? `https://api.anhhoangg.id.vn${p.imageUrl}` : (p.imageUrl || "/placeholder.png")} style={{ width: "100%", height: "100%", objectFit: "cover" }} alt="rel" />
                     </div>
                     <div>
                       <h4 style={{ margin: "0 0 5px 0", fontSize: "14px", fontWeight: "700", color: "var(--text-primary)" }}>{p.sanPham}</h4>

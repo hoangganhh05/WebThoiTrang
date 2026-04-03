@@ -10,7 +10,7 @@ const ProductCard = ({ product, addToCart }) => {
 
   const rawUrl = product.imageUrl || "";
   const imageUrl = rawUrl && rawUrl.startsWith("/")
-    ? `http://localhost:8080${rawUrl}`
+    ? `https://api.anhhoangg.id.vn${rawUrl}`
     : rawUrl;
 
   return (

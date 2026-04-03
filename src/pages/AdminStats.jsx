@@ -109,7 +109,7 @@ const AdminStats = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/orders")
+    axios.get("https://api.anhhoangg.id.vn/api/orders")
       .then(res => setOrders(Array.isArray(res.data) ? res.data : []))
       .catch(() => setOrders([]))
       .finally(() => setLoading(false));

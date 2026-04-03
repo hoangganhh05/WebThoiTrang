@@ -25,7 +25,7 @@ export const CartProvider = ({ children }) => {
       try {
         setLoadingCart(true);
         // GET có kèm Header bảo mật Token
-        const res = await axios.get(`http://localhost:8080/api/cart/${user.id}`, getAuthHeader());
+        const res = await axios.get(`https://api.anhhoangg.id.vn/api/cart/${user.id}`, getAuthHeader());
         const dbItems = res.data.items.map(dbItem => ({
             ...dbItem,
             id: dbItem.productId, 
@@ -71,7 +71,7 @@ export const CartProvider = ({ children }) => {
           quantity: 1
         };
         // POST đính kèm Header
-        await axios.post(`http://localhost:8080/api/cart/${user.id}/add`, itemRequest, getAuthHeader());
+        await axios.post(`https://api.anhhoangg.id.vn/api/cart/${user.id}/add`, itemRequest, getAuthHeader());
         loadCart(); 
       } catch (err) {
         console.error("Lỗi thêm Sản phẩm vào DB:", err);
@@ -94,7 +94,7 @@ export const CartProvider = ({ children }) => {
     if (user && user.id) {
       try {
         // DELETE đính kèm Header
-        await axios.delete(`http://localhost:8080/api/cart/${user.id}/remove/${productId}`, getAuthHeader());
+        await axios.delete(`https://api.anhhoangg.id.vn/api/cart/${user.id}/remove/${productId}`, getAuthHeader());
         loadCart();
       } catch (err) {
         console.error("Lỗi xóa SP trên DB:", err);
@@ -109,7 +109,7 @@ export const CartProvider = ({ children }) => {
     if (user && user.id) {
       try {
         // PUT đính kèm Header
-        await axios.put(`http://localhost:8080/api/cart/${user.id}/update/${productId}?amount=${amount}`, null, getAuthHeader());
+        await axios.put(`https://api.anhhoangg.id.vn/api/cart/${user.id}/update/${productId}?amount=${amount}`, null, getAuthHeader());
         loadCart();
       } catch (err) {
         console.error("Lỗi cập nhật số lượng SP trên DB:", err);
@@ -128,7 +128,7 @@ export const CartProvider = ({ children }) => {
     if (user && user.id) {
       try {
         // DELETE đính kèm Header
-        await axios.delete(`http://localhost:8080/api/cart/${user.id}/clear`, getAuthHeader());
+        await axios.delete(`https://api.anhhoangg.id.vn/api/cart/${user.id}/clear`, getAuthHeader());
         setCartItems([]);
       } catch (err) {
         console.error("Lỗi clear giỏ hàng trên DB:", err);

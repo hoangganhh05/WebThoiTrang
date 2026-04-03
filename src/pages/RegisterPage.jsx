@@ -13,7 +13,7 @@ const RegisterPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/auth/register", user);
+      await axios.post("https://api.anhhoangg.id.vn/api/auth/register", user);
       alert("🎉 Đăng ký thành công! Hãy đăng nhập ngay.");
       navigate("/login");
     } catch (err) {

@@ -75,7 +75,7 @@ const CheckoutPage = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:8080/api/orders", orderData);
+      const res = await axios.post("https://api.anhhoangg.id.vn/api/orders", orderData);
       
       // Phân tích kết quả trả về từ Backend để lấy Order ID
       const responseText = typeof res.data === "string" ? res.data : JSON.stringify(res.data);
@@ -257,7 +257,7 @@ const CheckoutPage = () => {
                 <li key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "10px" }}>
                    <div style={{ display: "flex", alignItems: "center", gap: "10px", flex: 1 }}>
                      <div style={{ width: "50px", height: "50px", background: "#f1f5f9", borderRadius: "8px", overflow: "hidden", flexShrink: 0 }}>
-                        <img src={item.imageUrl && item.imageUrl.startsWith("/") ? `http://localhost:8080${item.imageUrl}` : (item.imageUrl || "https://via.placeholder.com/50?text=No+Image")} alt={item.sanPham} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        <img src={item.imageUrl && item.imageUrl.startsWith("/") ? `https://api.anhhoangg.id.vn${item.imageUrl}` : (item.imageUrl || "https://via.placeholder.com/50?text=No+Image")} alt={item.sanPham} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                      </div>
                      <div style={{ display: "flex", flexDirection: "column" }}>
                         <span style={{ fontSize: "14px", fontWeight: "600", color: "#1e293b", WebkitLineClamp: 1, WebkitBoxOrient: "vertical", overflow: "hidden", display: "-webkit-box" }}>{item.sanPham}</span>

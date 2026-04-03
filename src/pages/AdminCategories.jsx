@@ -11,7 +11,7 @@ const AdminCategories = () => {
 
   const fetchCategories = () => {
     setLoading(true);
-    axios.get("http://localhost:8080/api/categories")
+    axios.get("https://api.anhhoangg.id.vn/api/categories")
       .then(res => setCategories(Array.isArray(res.data) ? res.data : []))
       .catch(() => setCategories([]))
       .finally(() => setLoading(false));
@@ -25,7 +25,7 @@ const AdminCategories = () => {
       return;
     }
     try {
-      await axios.post("http://localhost:8080/api/categories", { name: newName.trim() });
+      await axios.post("https://api.anhhoangg.id.vn/api/categories", { name: newName.trim() });
       setNewName("");
       fetchCategories();
       window.showToast?.(`Đã thêm danh mục "${newName.trim()}" thành công! 🎉`, "success");
@@ -40,7 +40,7 @@ const AdminCategories = () => {
       return;
     }
     try {
-      await axios.put(`http://localhost:8080/api/categories/${id}`, { name: editName.trim() });
+      await axios.put(`https://api.anhhoangg.id.vn/api/categories/${id}`, { name: editName.trim() });
       setEditingId(null);
       fetchCategories();
       window.showToast?.("Đã cập nhật tên danh mục!", "success");
@@ -52,7 +52,7 @@ const AdminCategories = () => {
   const handleDelete = async (id) => {
     if (deletingId === id) {
       try {
-        await axios.delete(`http://localhost:8080/api/categories/${id}`);
+        await axios.delete(`https://api.anhhoangg.id.vn/api/categories/${id}`);
         setDeletingId(null);
         fetchCategories();
         window.showToast?.("Đã xóa danh mục!", "success");

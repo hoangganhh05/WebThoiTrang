@@ -12,7 +12,7 @@ const OrdersPage = () => {
 
   const fetchOrders = () => {
     setLoading(true);
-    axios.get(`http://localhost:8080/api/orders/user/${user.id}`)
+    axios.get(`https://api.anhhoangg.id.vn/api/orders/user/${user.id}`)
       .then(res => setOrders(res.data))
       .catch(err => console.error("Lỗi khi tải đơn hàng:", err))
       .finally(() => setLoading(false));
@@ -28,7 +28,7 @@ const OrdersPage = () => {
 
   const handleCancelOrder = async (orderId) => {
     try {
-      await axios.put(`http://localhost:8080/api/orders/${orderId}/status?status=CANCELLED`);
+      await axios.put(`https://api.anhhoangg.id.vn/api/orders/${orderId}/status?status=CANCELLED`);
       window.showToast?.("Đã hủy đơn hàng thành công!", "success");
       fetchOrders();
       setCancelingId(null);
@@ -108,7 +108,7 @@ const OrdersPage = () => {
                       <div key={item.id} style={{ display: "flex", alignItems: "center", gap: "15px" }}>
                          <div style={{ width: "40px", height: "40px", background: "#e2e8f0", borderRadius: "6px", overflow: "hidden" }}>
                            {item.product?.imageUrl && (
-                              <img src={item.product.imageUrl.startsWith("/") ? `http://localhost:8080${item.product.imageUrl}` : item.product.imageUrl} alt={item.product?.sanPham} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                              <img src={item.product.imageUrl.startsWith("/") ? `https://api.anhhoangg.id.vn${item.product.imageUrl}` : item.product.imageUrl} alt={item.product?.sanPham} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                            )}
                          </div>
                          <div style={{ flex: 1 }}>
