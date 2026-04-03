@@ -397,8 +397,15 @@ main > * {
 }
 
 /* =============================================
-   RESPONSIVE - Mobile & Tablet
+   ADMIN LAYOUT (Mặc định cho PC)
    ============================================= */
+.admin-container {
+  padding: 40px 20px !important;
+}
+.admin-card {
+  padding: 30px !important;
+}
+
 @media (max-width: 1024px) {
   nav { padding: 0.85rem 1.5rem !important; }
   .home-container { padding: 30px 1.5rem !important; gap: 20px !important; }

@@ -81,7 +81,7 @@ const AdminCategories = () => {
           <h3 style={{ margin: "0 0 20px 0", color: "var(--primary-color)", fontSize: "18px", fontWeight: "700" }}>
             ✨ Thêm danh mục mới
           </h3>
-          <div style={{ display: "flex", gap: "12px" }}>
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
             <input
               type="text"
               value={newName}
