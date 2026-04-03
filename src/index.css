@@ -410,8 +410,10 @@ main > * {
     flex-wrap: wrap !important;
     padding: 0.8rem 1rem !important;
     gap: 12px !important;
-    justify-content: center !important;
+    justify-content: space-between !important; /* Trải rộng Logo và User Menu ra 2 bên */
   }
+  
+  nav > a:first-child { width: auto !important; justify-content: flex-start !important; }
   
   nav form {
     order: 3;
@@ -419,7 +421,9 @@ main > * {
     margin: 5px 0 !important;
   }
   
-  nav > a:first-child { width: 100%; justify-content: center !important; }
+  nav > div:last-child {
+    margin-left: 0 !important; /* Sửa lỗi lòi ra ngoài của nhóm icon User */
+  }
   
   /* Home Layout */
   .home-container {
@@ -427,37 +431,27 @@ main > * {
     padding: 20px 1rem !important;
   }
   
-  /* Sidebar thành hàng ngang cuộn đc */
+  /* Sidebar xếp ngay ngắn dọc xuống trên Mobile thay vì ẩn */
   .home-container > div:first-child {
     width: 100% !important;
     position: static !important;
     display: flex !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    padding: 10px !important;
-    gap: 8px !important;
-    background: #fff !important;
+    flex-direction: column !important; /* Xếp chồng 2 ô Danh Mục và Giá lên nhau */
+    gap: 20px !important;
+    padding: 0 !important;
     border: none !important;
-    border-bottom: 1px solid var(--border-color) !important;
-    white-space: nowrap !important;
-    scrollbar-width: none !important; /* Hide scrollbar Firefox */
   }
+  .home-container > div:first-child h3 { display: flex !important; }
   
-  .home-container > div:first-child::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
-
-  .home-container > div:first-child h3 { display: none !important; }
   .home-container > div:first-child ul { 
     flex-direction: row !important; 
-    gap: 8px !important; 
+    flex-wrap: wrap !important; /* Các nút danh mục tràn thì xuống dòng */
+    gap: 10px !important; 
   }
   
-  .home-container > div:first-child ul li button {
-    padding: 8px 15px !important;
-    width: auto !important;
-  }
-
-  .home-container > div:first-child > div { /* Price range container */
-    display: none !important; /* Ẩn lọc giá trên mobile nhỏ để tránh vỡ layout sidebar ngang */
+  .home-container > div:first-child > div { 
+    display: block !important; /* HIỆN LẠI BỘ LỌC GIÁ TIỀN */
+    width: 100% !important;
   }
 
   
@@ -485,6 +479,7 @@ main > * {
   nav > div:last-child a span { display: none; } /* Chỉ hiện icon trên mobile siêu nhỏ */
   
   /* Chi tiết sản phẩm MOBILE */
+  .product-detail-padding { padding: 0 1rem !important; }
   .product-detail-layout {
     gap: 30px !important;
   }

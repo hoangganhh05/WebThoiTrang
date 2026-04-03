@@ -116,7 +116,7 @@ const ProductDetailPage = () => {
 
   return (
     <div style={{ flex: 1, padding: "40px 0", background: "var(--bg-color)" }}>
-      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 3rem" }}>
+      <div className="product-detail-padding" style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 3rem" }}>
         
         {/* BREADCRUMBS */}
         <nav style={{ marginBottom: "25px", fontSize: "14px", color: "var(--text-muted)" }}>
