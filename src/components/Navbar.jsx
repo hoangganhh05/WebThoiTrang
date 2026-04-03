@@ -156,16 +156,12 @@ const Navbar = () => {
             >
               <div 
                 onClick={() => setProfileOpen(!profileOpen)}
-                title="Profile cá nhân" 
-                style={{ display: "flex", alignItems: "center", gap: "8px", padding: "4px 12px 4px 6px", background: profileOpen ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.08)", borderRadius: "30px", border: "1px solid rgba(255,255,255,0.1)", cursor: "pointer", transition: "all 0.3s" }}
+                title={user.username} 
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "3px", background: profileOpen ? "rgba(255,255,255,0.15)" : "transparent", borderRadius: "50%", cursor: "pointer", transition: "all 0.3s" }}
               >
-                <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: "linear-gradient(135deg, var(--primary-color), #b05020)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "14px", color: "#fff", boxShadow: "0 2px 5px rgba(0,0,0,0.2)" }}>
+                <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "linear-gradient(135deg, var(--primary-color), #b05020)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "16px", color: "#fff", boxShadow: "0 2px 8px rgba(0,0,0,0.3)" }}>
                   {user.username.charAt(0).toUpperCase()}
                 </div>
-                <span className="nav-username" style={{ color: "#fff", fontWeight: "600", fontSize: "14px" }}>
-                  {user.username}
-                </span>
-                <span style={{ fontSize: "10px", opacity: 0.7, transition: "transform 0.25s", transform: profileOpen ? "rotate(180deg)" : "rotate(0deg)", display: "inline-block" }}>▼</span>
               </div>
 
               {profileOpen && (
