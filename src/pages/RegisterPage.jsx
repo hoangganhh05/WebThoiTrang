@@ -9,6 +9,7 @@ const RegisterPage = () => {
     role: "USER"
   });
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -65,25 +66,41 @@ const RegisterPage = () => {
 
           <div>
             <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#475569", fontSize: "14px" }}>Mật khẩu bảo mật</label>
-            <input
-              type="password"
-              placeholder="Nhập mật khẩu..."
-              required
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
-              style={{ width: "100%", padding: "14px 16px", border: "1px solid #cbd5e1", borderRadius: "10px", backgroundColor: "#f8fafc", fontSize: "15px", transition: "0.2s" }}
-            />
+            <div style={{ position: "relative" }}>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Nhập mật khẩu..."
+                required
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                style={{ width: "100%", padding: "14px 45px 14px 16px", border: "1px solid #cbd5e1", borderRadius: "10px", backgroundColor: "#f8fafc", fontSize: "15px", transition: "0.2s" }}
+              />
+              <span 
+                onClick={() => setShowPassword(!showPassword)}
+                style={{ position: "absolute", right: "15px", top: "50%", transform: "translateY(-50%)", cursor: "pointer", fontSize: "18px", userSelect: "none", opacity: 0.6 }}
+              >
+                {showPassword ? "👁️" : "🙈"}
+              </span>
+            </div>
           </div>
 
           <div>
             <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#475569", fontSize: "14px" }}>Xác nhận mật khẩu</label>
-            <input
-              type="password"
-              placeholder="Nhập lại mật khẩu..."
-              required
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              style={{ width: "100%", padding: "14px 16px", border: "1px solid #cbd5e1", borderRadius: "10px", backgroundColor: "#f8fafc", fontSize: "15px", transition: "0.2s" }}
-            />
+            <div style={{ position: "relative" }}>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Nhập lại mật khẩu..."
+                required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                style={{ width: "100%", padding: "14px 45px 14px 16px", border: "1px solid #cbd5e1", borderRadius: "10px", backgroundColor: "#f8fafc", fontSize: "15px", transition: "0.2s" }}
+              />
+              <span 
+                onClick={() => setShowPassword(!showPassword)}
+                style={{ position: "absolute", right: "15px", top: "50%", transform: "translateY(-50%)", cursor: "pointer", fontSize: "18px", userSelect: "none", opacity: 0.6 }}
+              >
+                {showPassword ? "👁️" : "🙈"}
+              </span>
+            </div>
           </div>
 
           <button
