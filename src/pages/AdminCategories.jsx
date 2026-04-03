@@ -68,7 +68,7 @@ const AdminCategories = () => {
   };
 
   return (
-    <div style={{ flex: 1, backgroundColor: "#f8fafc", padding: "40px 20px" }}>
+    <div className="admin-container" style={{ flex: 1, backgroundColor: "#f8fafc" }}>
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
 
         <h1 style={{ fontSize: "28px", color: "#1e293b", margin: "0 0 8px 0", fontWeight: "900", display: "flex", alignItems: "center", gap: "10px" }}>
@@ -77,7 +77,7 @@ const AdminCategories = () => {
         <p style={{ color: "#64748b", marginBottom: "30px" }}>Thêm, sửa, xóa danh mục sản phẩm của cửa hàng.</p>
 
         {/* Form thêm mới */}
-        <div style={{ background: "#fff", borderRadius: "16px", padding: "30px", boxShadow: "0 2px 10px rgba(0,0,0,0.05)", border: "1px solid var(--border-color)", marginBottom: "30px" }}>
+        <div className="admin-card" style={{ background: "#fff", borderRadius: "16px", boxShadow: "0 2px 10px rgba(0,0,0,0.05)", border: "1px solid var(--border-color)", marginBottom: "30px" }}>
           <h3 style={{ margin: "0 0 20px 0", color: "var(--primary-color)", fontSize: "18px", fontWeight: "700" }}>
             ✨ Thêm danh mục mới
           </h3>
@@ -100,7 +100,7 @@ const AdminCategories = () => {
         </div>
 
         {/* Danh sách danh mục */}
-        <div style={{ background: "#fff", borderRadius: "16px", padding: "30px", boxShadow: "0 2px 10px rgba(0,0,0,0.05)", border: "1px solid var(--border-color)" }}>
+        <div className="admin-card" style={{ background: "#fff", borderRadius: "16px", boxShadow: "0 2px 10px rgba(0,0,0,0.05)", border: "1px solid var(--border-color)" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
             <h3 style={{ margin: 0, color: "#1e293b", fontSize: "18px", fontWeight: "700" }}>
               Danh sách hiện có

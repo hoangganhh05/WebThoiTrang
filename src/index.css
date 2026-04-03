@@ -431,6 +431,17 @@ main > * {
     gap: 15px !important;
   }
   
+  .nav-username { display: none !important; } /* Ẩn chữ tên người dùng trên Thanh Navbar Mobile */
+  
+  /* Cứu padding bóp nghẹt trang Admin trên Mobile */
+  .admin-container {
+    padding: 15px 10px !important;
+  }
+  .admin-card {
+    padding: 15px !important;
+    border-radius: 12px !important;
+  }
+  
   /* Home Layout */
   .home-container {
     flex-direction: column !important;

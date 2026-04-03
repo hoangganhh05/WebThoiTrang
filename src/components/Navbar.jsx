@@ -162,7 +162,7 @@ const Navbar = () => {
                 <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: "linear-gradient(135deg, var(--primary-color), #b05020)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "14px", color: "#fff", boxShadow: "0 2px 5px rgba(0,0,0,0.2)" }}>
                   {user.username.charAt(0).toUpperCase()}
                 </div>
-                <span style={{ color: "#fff", fontWeight: "600", fontSize: "14px" }}>
+                <span className="nav-username" style={{ color: "#fff", fontWeight: "600", fontSize: "14px" }}>
                   {user.username}
                 </span>
                 <span style={{ fontSize: "10px", opacity: 0.7, transition: "transform 0.25s", transform: profileOpen ? "rotate(180deg)" : "rotate(0deg)", display: "inline-block" }}>▼</span>

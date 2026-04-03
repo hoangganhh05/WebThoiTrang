@@ -96,7 +96,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div style={{ padding: "40px", flex: 1, backgroundColor: "#f8fafc" }}>
+    <div className="admin-container" style={{ flex: 1, backgroundColor: "#f8fafc" }}>
       <div style={{ maxWidth: "1600px", margin: "0 auto", boxSizing: "border-box" }}>
         
         <h1 style={{ fontSize: "28px", color: "#1e293b", margin: "0 0 30px 0", borderBottom: "2px solid var(--border-color)", paddingBottom: "15px" }}>
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
         </h1>
 
         {/* Form Panel Xịn Xò */}
-        <div style={{ background: "#fff", padding: "30px", borderRadius: "16px", boxShadow: "var(--shadow-md)", marginBottom: "40px", border: "1px solid var(--border-color)" }}>
+        <div className="admin-card" style={{ background: "#fff", borderRadius: "16px", boxShadow: "var(--shadow-md)", marginBottom: "40px", border: "1px solid var(--border-color)" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "25px" }}>
              <h3 style={{ margin: 0, color: "var(--primary-color)", fontSize: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
                {editingId ? "✏️ Chỉnh sửa thông tin sản phẩm" : "✨ Thêm sản phẩm mới"}

@@ -33,7 +33,7 @@ const AdminOrders = () => {
   };
 
   return (
-    <div style={{ padding: "40px", flex: 1, backgroundColor: "#f8fafc" }}>
+    <div className="admin-container" style={{ flex: 1, backgroundColor: "#f8fafc" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "30px", borderBottom: "2px solid var(--border-color)", paddingBottom: "20px" }}>
@@ -49,7 +49,7 @@ const AdminOrders = () => {
         {loading ? (
           <p>Đang tải dữ liệu...</p>
         ) : (
-          <div style={{ background: "#fff", borderRadius: "12px", boxShadow: "var(--shadow-md)", overflow: "hidden" }}>
+          <div className="admin-card" style={{ background: "#fff", borderRadius: "16px", boxShadow: "var(--shadow-sm)", border: "1px solid var(--border-color)" }}>
              <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
                <thead style={{ background: "#f1f5f9", borderBottom: "2px solid var(--border-color)" }}>
                  <tr>
