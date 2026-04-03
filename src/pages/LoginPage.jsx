@@ -33,9 +33,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={{ flex: 1, display: "flex", background: "#f8fafc" }}>
+    <div className="auth-layout" style={{ flex: 1, display: "flex", background: "#f8fafc" }}>
       {/* Hình ảnh bên trái */}
-      <div style={{ flex: 1, position: "relative", display: "flex", alignItems: "center", padding: "40px", backgroundImage: "url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div className="auth-image" style={{ flex: 1, position: "relative", display: "flex", alignItems: "center", padding: "40px", backgroundImage: "url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop')", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4))" }}></div>
         <div style={{ position: "relative", zIndex: 1, maxWidth: "500px", color: "#fff" }}>
           <h1 style={{ fontSize: "50px", fontWeight: "900", lineHeight: "1.1", margin: "0 0 20px 0" }}>
@@ -48,7 +48,7 @@ const LoginPage = () => {
       </div>
 
       {/* Form đăng nhập bên phải */}
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: "500px", maxWidth: "100%", padding: "50px", background: "#fff", boxShadow: "-20px 0 50px rgba(0,0,0,0.05)", zIndex: 2 }}>
+      <div className="auth-form" style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: "500px", maxWidth: "100%", padding: "50px", background: "#fff", boxShadow: "-20px 0 50px rgba(0,0,0,0.05)", zIndex: 2 }}>
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <div style={{ width: "60px", height: "60px", background: "linear-gradient(135deg, var(--primary-color), #b05020)", borderRadius: "15px", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "30px", fontWeight: "900", margin: "0 auto 20px auto", boxShadow: "0 10px 20px rgba(224, 123, 57, 0.35)", fontFamily: "'Playfair Display', serif" }}>
             S

@@ -22,9 +22,9 @@ const RegisterPage = () => {
   };
 
   return (
-    <div style={{ flex: 1, display: "flex", flexDirection: "row-reverse", background: "#f8fafc" }}>
+    <div className="auth-layout" style={{ flex: 1, display: "flex", flexDirection: "row-reverse", background: "#f8fafc" }}>
       {/* Hình ảnh bên phải cho trang Đăng ký */}
-      <div style={{ flex: 1, position: "relative", display: "flex", alignItems: "center", justifyContent: "flex-end", padding: "40px", backgroundImage: "url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2040&auto=format&fit=crop')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div className="auth-image" style={{ flex: 1, position: "relative", display: "flex", alignItems: "center", justifyContent: "flex-end", padding: "40px", backgroundImage: "url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2040&auto=format&fit=crop')", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4))" }}></div>
         <div style={{ position: "relative", zIndex: 1, maxWidth: "500px", color: "#fff", textAlign: "right" }}>
           <h1 style={{ fontSize: "50px", fontWeight: "900", lineHeight: "1.1", margin: "0 0 20px 0" }}>
@@ -37,7 +37,7 @@ const RegisterPage = () => {
       </div>
 
       {/* Form đăng ký bên trái */}
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: "500px", maxWidth: "100%", padding: "50px", background: "#fff", boxShadow: "20px 0 50px rgba(0,0,0,0.05)", zIndex: 2 }}>
+      <div className="auth-form" style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: "500px", maxWidth: "100%", padding: "50px", background: "#fff", boxShadow: "20px 0 50px rgba(0,0,0,0.05)", zIndex: 2 }}>
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <div style={{ width: "60px", height: "60px", background: "linear-gradient(135deg, var(--warning-color), #f97316)", borderRadius: "15px", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "30px", fontWeight: "900", margin: "0 auto 20px auto", boxShadow: "0 10px 20px rgba(245, 158, 11, 0.3)" }}>
             S

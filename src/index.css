@@ -484,6 +484,27 @@ main > * {
   
   nav > div:last-child a span { display: none; } /* Chỉ hiện icon trên mobile siêu nhỏ */
   
+  /* Auth pages mobile */
+  .auth-layout {
+    flex-direction: column !important;
+  }
+  .auth-image {
+    display: none !important; /* Ẩn cái ảnh quần áo để chừa 100% diện tích cho form nhập liệu trên đt */
+  }
+  .auth-form {
+    width: 100% !important;
+    padding: 30px 20px !important;
+  }
+  
+  /* Cứu cứng các bảng Admin bị tràn ngang */
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap; /* Tránh chữ trong bảng bị ép rớt dòng, cho phép vuốt ngang để xem */
+  }
+  
   /* Chi tiết sản phẩm MOBILE */
   .product-detail-padding { padding: 0 1rem !important; }
   .product-detail-layout {
