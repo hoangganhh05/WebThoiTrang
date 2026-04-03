@@ -405,24 +405,30 @@ main > * {
 }
 
 @media (max-width: 768px) {
-  /* Navbar mobile */
+  /* Navbar mobile - Xếp dọc 100% an toàn không bao giờ tràn */
   nav {
-    flex-wrap: wrap !important;
-    padding: 0.8rem 1rem !important;
-    gap: 12px !important;
-    justify-content: space-between !important; /* Trải rộng Logo và User Menu ra 2 bên */
+    flex-direction: column !important;
+    padding: 1rem !important;
+    gap: 15px !important;
   }
   
-  nav > a:first-child { width: auto !important; justify-content: flex-start !important; }
+  nav > a:first-child { 
+    width: 100% !important; 
+    justify-content: center !important; 
+  }
   
   nav form {
-    order: 3;
+    order: 3; /* Cục Search nằm cuối cùng */
     width: 100% !important;
-    margin: 5px 0 !important;
+    margin: 0 !important;
   }
   
   nav > div:last-child {
-    margin-left: 0 !important; /* Sửa lỗi lòi ra ngoài của nhóm icon User */
+    justify-content: center !important;
+    flex-wrap: wrap !important; /* Dàn nút Sản phẩm, User, Admin thành cụm ở giữa */
+    width: 100% !important;
+    margin-left: 0 !important;
+    gap: 15px !important;
   }
   
   /* Home Layout */
