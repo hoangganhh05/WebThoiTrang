@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../api/api";
 import { useCart } from "../context/CartContext";
 import ProductCard from "../components/ProductCard";
 import { useSearchParams } from "react-router-dom";
@@ -114,7 +115,7 @@ const HomePage = () => {
 
   useEffect(() => {
     // Fetch categories
-    axios.get("https://api.anhhoangg.id.vn/api/categories")
+    axios.get(`${API_URL}/categories`)
       .then((res) => {
         if (Array.isArray(res.data)) setCategories(res.data);
         else if (res.data && Array.isArray(res.data.data)) setCategories(res.data.data);
@@ -126,9 +127,9 @@ const HomePage = () => {
   useEffect(() => {
     setLoading(true);
 
-    let apiUrl = "https://api.anhhoangg.id.vn/api/products";
+    let apiUrl = `${API_URL}/products`;
     if (keyword) {
-      apiUrl = `https://api.anhhoangg.id.vn/api/products/search?keyword=${keyword}`;
+      apiUrl = `${API_URL}/products/search?keyword=${keyword}`;
     }
 
     axios

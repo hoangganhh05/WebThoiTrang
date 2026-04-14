@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../api/api";
 
 const ProductCard = ({ product, addToCart }) => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const ProductCard = ({ product, addToCart }) => {
 
   const rawUrl = product.imageUrl || "";
   const imageUrl = rawUrl && rawUrl.startsWith("/")
-    ? `https://api.anhhoangg.id.vn${rawUrl}`
+    ? `${BASE_URL}${rawUrl}`
     : rawUrl;
 
   return (

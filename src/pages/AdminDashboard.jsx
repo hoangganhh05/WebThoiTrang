@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axiosClient from "../api/api";
+import axiosClient, { BASE_URL } from "../api/api";
 
 const AdminDashboard = () => {
   const [categories, setCategories] = useState([]);
@@ -145,7 +145,7 @@ const AdminDashboard = () => {
               <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
                  <div style={{ position: "relative", width: "100px", height: "100px", borderRadius: "12px", border: "2px dashed #cbd5e1", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", background: "#f8fafc" }}>
                    {(imageFile || newProduct.imageUrl) ? (
-                     <img src={imageFile ? URL.createObjectURL(imageFile) : (newProduct.imageUrl?.startsWith("/") ? `https://api.anhhoangg.id.vn${newProduct.imageUrl}` : newProduct.imageUrl)} alt="Preview" style={{ width: "100%", height: "100%", objectFit: "contain", background: "#fff" }} />
+                     <img src={imageFile ? URL.createObjectURL(imageFile) : (newProduct.imageUrl?.startsWith("/") ? `${BASE_URL}${newProduct.imageUrl}` : newProduct.imageUrl)} alt="Preview" style={{ width: "100%", height: "100%", objectFit: "contain", background: "#fff" }} />
                    ) : (
                      <span style={{ fontSize: "24px", color: "#cbd5e1" }}>🖼️</span>
                    )}
@@ -182,7 +182,7 @@ const AdminDashboard = () => {
             {products.map((p) => (
               <div key={p.id} style={{ border: "1px solid var(--border-color)", borderRadius: "16px", backgroundColor: "#fff", display: "flex", flexDirection: "column", overflow: "hidden", transition: "0.3s", boxShadow: "var(--shadow-sm)" }}>
                 <div style={{ position: "relative", height: "220px", background: "#f8fafc", padding: "20px" }}>
-                  <img src={p.imageUrl?.startsWith("/") ? `https://api.anhhoangg.id.vn${p.imageUrl}` : (p.imageUrl || "https://via.placeholder.com/400?text=No+Image")} alt={p.sanPham} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                  <img src={p.imageUrl?.startsWith("/") ? `${BASE_URL}${p.imageUrl}` : (p.imageUrl || "https://via.placeholder.com/400?text=No+Image")} alt={p.sanPham} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                   <span style={{ position: "absolute", top: "10px", right: "10px", background: p.quantity > 0 ? "rgba(16, 185, 129, 0.9)" : "rgba(239, 68, 68, 0.9)", color: "#fff", padding: "4px 8px", borderRadius: "6px", fontSize: "12px", fontWeight: "bold" }}>
                     Kho: {p.quantity}
                   </span>
